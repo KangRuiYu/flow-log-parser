@@ -126,6 +126,12 @@ class TestParseLog(unittest.TestCase):
         self.assertEqual(tag_counts, {"email": 1})
         self.assertEqual(port_protocol_counts, {"993,tcp": 1})
 
+    def test_duplicate_log(self):
+        path = Path("test_inputs/duplicate_log.txt")
+        tag_counts, port_protocol_counts = parser.parse_log(path, self.lookup)
+        self.assertEqual(tag_counts, {"sv_P1": 3, "email": 4})
+        self.assertEqual(port_protocol_counts, {"25,tcp": 3, "143,tcp": 4})
+
 
 if __name__ == "__main__":
     unittest.main()
