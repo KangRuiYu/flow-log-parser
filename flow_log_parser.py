@@ -7,7 +7,7 @@ from collections import Counter
 
 TITLE = "Flow Log Parser"
 DESC = "Program that parses a file with flow log data to tags from a lookup file."
-LOG_REGEX = re.compile(r"^(\d+) \d+ .+ [0-9|\.]+ [0-9|\.]+ \d+ (\d+) (\d+) \d+ \d+ \d+ \d+ \w+ \w+$")
+LOG_REGEX = re.compile(r"^(\d+) \d+ .+ [0-9|\.]+ [0-9|\.]+ \d+ (\d+) (\d+) \d+ \d+ \d+ \d+ (\w+) (\w+)$")
 LOG_VERSION = "2"
 
 
@@ -60,8 +60,12 @@ def parse_log(path, lookup):
                 continue
             if not line_match.group(3) in protocol_mappings:
                 continue
+            if line_match.group(4) != "ACCEPT":
+                continue
+            if line_match.group(5) != "OK":
+                continue
 
-            _, dstport, protocol_num = line_match.groups()
+            _, dstport, protocol_num, _, _ = line_match.groups()
             key = f"{dstport},{protocol_mappings[protocol_num]}"
 
             port_protocol_counts[key] += 1

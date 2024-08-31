@@ -83,13 +83,12 @@ class TestParseLog(unittest.TestCase):
         tag_counts, port_protocol_counts = parser.parse_log(path, self.lookup)
         self.assertEqual(tag_counts, {
             "sv_P2": 1,
-            "sv_P1": 2,
+            "sv_P1": 1,
             "email": 3,
-            "Untagged": 8
+            "Untagged": 7
         })
         self.assertEqual(port_protocol_counts, {
             "49153,tcp": 1,
-            "49154,tcp": 1,
             "49155,tcp": 1,
             "49156,tcp": 1,
             "49157,tcp": 1,
@@ -97,7 +96,6 @@ class TestParseLog(unittest.TestCase):
             "80,tcp": 1,
             "1024,tcp": 1,
             "443,tcp": 1,
-            "23,tcp": 1,
             "25,tcp": 1,
             "110,tcp": 1,
             "993,tcp": 1,
@@ -110,10 +108,9 @@ class TestParseLog(unittest.TestCase):
         self.assertEqual(tag_counts, {
             "sv_P1": 1,
             "email": 2,
-            "Untagged": 5
+            "Untagged": 4
         })
         self.assertEqual(port_protocol_counts, {
-            "49154,tcp": 1,
             "49156,tcp": 1,
             "49157,tcp": 1,
             "49158,tcp": 1,
