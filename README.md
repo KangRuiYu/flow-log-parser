@@ -1,5 +1,5 @@
 # Flow Log Parser
-A simple program for parsing a file containing flow log data and mapping each row to a tag based on a lookup table.
+A simple program for parsing a file containing flow log data and mapping each row to a tag based on a lookup table. An example of the program output is in the `sample_output.txt` file.
 
 ## How to Run
 The program was written and ran on Python 3.11.9. Python can be installed from the [Python site](https://www.python.org/downloads/). To run the program, download and run the `flow_log_parser.py` file with Python. The program takes in three arguments:
