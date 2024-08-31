@@ -26,3 +26,6 @@ The program was tested on basic test cases in `test_flow_log_parser.py` using sa
 6. Non-OK rows are skipped.
 7. There is no strict order required for the output file.
 8. All other properties for the flow log data is valid (for the sake of time).
+
+## Analysis
+The program uses values defined in the `socket` library to map protocol numbers to their name (to keep it to built-in libraries). These may not be extensive and the names may not be the same as those in other sources.
